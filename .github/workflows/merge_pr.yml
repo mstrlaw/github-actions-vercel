@@ -21,7 +21,7 @@ jobs:
       - name: 'Build & deploy'
         run: |
           echo vercel build
-          vercel deploy --prebuilt >deployment-url.txt 2>error.txt
+          echo vercel deploy --prebuilt >deployment-url.txt 2>error.txt
           echo alias $deploymentUrl to dev.surfe.com
         #We need the below code to alias the returned deploymentUrl into our custom dev domain
         #See: https://vercel.com/docs/cli/deploy#deploying-to-a-custom-domain

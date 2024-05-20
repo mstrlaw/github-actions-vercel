@@ -13,7 +13,7 @@ jobs:
       - name: 'Build & deploy'
         run: |
           echo vercel build
-          vercel deploy --prebuilt >deployment-url.txt 2>error.txt
+          echo vercel deploy --prebuilt >deployment-url.txt 2>error.txt
           echo alias $deploymentUrl
   # We need to pass $deploymentUrl to e2e-test as an output, so we use that
   # value as the test URL. We also need to find a way to pass it as an env variable
