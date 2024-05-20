@@ -4,6 +4,7 @@ on: [push, workflow_dispatch]
 jobs:
   test-locally:
     runs-on: ubuntu-latest
+    container: ubuntu
     strategy:
       fail-fast: false
       max-parallel: 5
