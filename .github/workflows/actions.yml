@@ -18,7 +18,7 @@ jobs:
         id: start-serve
         run: |
           pm2 serve src --name "server"
-          curl -i localhost:8080
+          curl -i http://localhost:8080/
       - name: Stop localhost
         id: stop-serve
         run: pm2 stop server
