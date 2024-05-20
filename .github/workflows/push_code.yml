@@ -1,0 +1,13 @@
+name: I run when a PR is opened (into main)
+#run-name: ${{ github.actor }} is performing ${{ github.event_name }} 🚀
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: echo "I will run E2E tests"
