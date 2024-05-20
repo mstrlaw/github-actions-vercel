@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 18
       - name: Install PM2
-        run: npm i pm2
+        run: npm i pm2 -g
       - name: Run on localhost
         id: start-serve
         run: pm2 start npm --name "server" -- run serve
