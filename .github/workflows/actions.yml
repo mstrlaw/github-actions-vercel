@@ -4,7 +4,6 @@ on: [push, workflow_dispatch]
 jobs:
   test-locally:
     runs-on: ubuntu-latest
-    container: ubuntu
     strategy:
       fail-fast: false
       max-parallel: 5
@@ -19,6 +18,8 @@ jobs:
         id: start-serve
         run: |
           pm2 serve src --name "server"
+          sleep 5
+          pm2 status
           curl -i http://127.0.0.1:8080/
       - name: Stop localhost
         id: stop-serve
