@@ -4,6 +4,7 @@
   "description": "A simple demo project to test GitHub workflows",
   "main": "index.js",
   "scripts": {
+    "serve": "npx serve",
     "test-e2e": "npx playwright test",
     "test-e2e-ui": "npx playwright test --ui"
   },
