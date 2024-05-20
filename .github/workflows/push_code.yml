@@ -1,13 +1,17 @@
-name: I run when a PR is opened (into main)
-#run-name: ${{ github.actor }} is performing ${{ github.event_name }} 🚀
+# This workflow runs anytime code is pushed to any branch, except for main
+
+name: Lint code
 on:
-  pull_request:
-    branches:
-    - main
+  push:
+    # Ignore all branches except main
+    branches:    
+      - '*'
+      - '*/*'
+      - '**'
+      - '!main'
 
 jobs:
-  test:
+  lint-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: echo "I will run E2E tests"
+      - run: echo "I will lint things"
