@@ -16,7 +16,9 @@ jobs:
         run: npm i pm2 -g
       - name: Run on localhost
         id: start-serve
-        run: pm2 start npm --name "server" -- run serve
+        run: |
+          pm2 start npm --name "server" -- run serve
+          curl -i localhost:3000
       - name: Stop localhost
         id: stop-serve
         run: pm2 stop server
