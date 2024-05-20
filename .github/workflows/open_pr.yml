@@ -1,4 +1,5 @@
-name: I run when a PR is opened (into main)
+# This workflow runs for any PR pointing to main
+name: E2E Tests
 #run-name: ${{ github.actor }} is performing ${{ github.event_name }} 🚀
 on:
   pull_request:

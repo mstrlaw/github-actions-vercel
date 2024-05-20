@@ -1,19 +1,20 @@
-name: I run anytime code is pushed, except for main
-#run-name: ${{ github.actor }} is performing ${{ github.event_name }} 🚀
+# This workflow runs anytime code is pushed to any branch, except for main
+
+name: Lint code
 on:
   push:
+    # Ignore all branches except main
     branches:    
-      - '*'         # matches every branch that doesn't contain a '/'
-      - '*/*'       # matches every branch containing a single '/'
-      - '**'        # matches every branch
-      - '!main'     # excludes main
+      - '*'
+      - '*/*'
+      - '**'
+      - '!main'
 
 jobs:
-  test:
+  lint-code:
     runs-on: ubuntu-latest
     steps:
-      - name: Lint
-        run: echo "I will lint things"
+      - run: echo "I will lint things"
 
 
 # jobs:
