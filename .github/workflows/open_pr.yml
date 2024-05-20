@@ -7,8 +7,20 @@ on:
     - main
 
 jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Build & deploy'
+        run: |
+          echo vercel build
+          vercel deploy --prebuilt >deployment-url.txt 2>error.txt
+          echo alias $deploymentUrl
+  # We need to pass $deploymentUrl to e2e-test as an output, so we use that
+  # value as the test URL. We also need to find a way to pass it as an env variable
+  # to playwright
   e2e-tests:
     runs-on: ubuntu-latest
+    needs: [build-and-upload]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
