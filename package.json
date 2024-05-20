@@ -1,0 +1,23 @@
+{
+  "name": "github-actions-vercel",
+  "version": "1.0.0",
+  "description": "A simple demo project to test GitHub workflows",
+  "main": "index.js",
+  "scripts": {
+    "test-e2e": "npx playwright test",
+    "test-e2e-ui": "npx playwright test --ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/surfe/github-actions-vercel.git"
+  },
+  "author": "mstrlaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/surfe/github-actions-vercel/issues"
+  },
+  "homepage": "https://github.com/surfe/github-actions-vercel#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.44.0"
+  }
+}
