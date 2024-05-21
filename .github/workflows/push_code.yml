@@ -34,5 +34,5 @@ jobs:
         run: |
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} >deployment-url.txt 2>error.txt
           deploymentUrl=`cat deployment-url.txt`
-          echo deploymentUrl
-          vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app
+          echo $deploymentUrl
+          vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
