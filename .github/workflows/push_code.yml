@@ -32,10 +32,4 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: |
-          echo $VERCEL_ORG_ID
-          echo $VERCEL_PROJECT_ID
-          echo token: ${{ secrets.VERCEL_TOKEN }}
-          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} >deployment-url.txt 2>error.txt
-          deploymentUrl=`cat deployment-url.txt`
-          echo ${{ env.deploymentUrl }}
-        #vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
