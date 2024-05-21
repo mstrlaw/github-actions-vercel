@@ -32,7 +32,6 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: |
-          vercel switch surfe
           vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
         #vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} >deployment-url.txt 2>error.txt
         #deploymentUrl=`cat deployment-url.txt`
