@@ -6,7 +6,8 @@ on:
     # Matches semver format
       - "v[0-9]+.[0-9]+.[0-9]+"
     branches:
-      - main 
+      - main
+    if: "startsWith(github.ref, 'refs/tags/')"
 
 jobs:
   build-and-upload:
@@ -16,6 +17,6 @@ jobs:
       - name: 'Build & deploy'
         run: |
           echo vercel build
-          vercel deploy --prebuilt --prod >deployment-url.txt 2>error.txt
+          echo vercel deploy --prebuilt --prod >deployment-url.txt 2>error.txt
       # Do we still need to alias? $deploymentUrl to dev.surfe.com 
       # Maybe not, Vercel might take care of this
