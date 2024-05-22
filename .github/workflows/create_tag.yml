@@ -1,0 +1,21 @@
+# This workflow runs for new tags created only on the main branch
+name: Deploy to Production
+on:
+  push:
+    tags:
+    # Matches semver format
+      - "v[0-9]+.[0-9]+.[0-9]+"
+    branches:
+      - main 
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Build & deploy'
+        run: |
+          echo vercel build
+          vercel deploy --prebuilt --prod >deployment-url.txt 2>error.txt
+      # Do we still need to alias? $deploymentUrl to dev.surfe.com 
+      # Maybe not, Vercel might take care of this
