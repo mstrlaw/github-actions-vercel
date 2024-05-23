@@ -1,12 +1,15 @@
 # This workflow runs for new tags created only on the main branch
 name: Deploy to Production
 on:
-  create
+  create:
 
 jobs:
   confirm-tag:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Validate tag format
         id: validate_tag
         run: |
