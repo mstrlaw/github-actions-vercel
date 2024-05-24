@@ -1,5 +1,5 @@
 # This workflow runs for any PR pointing to main
-name: Perform Tests
+name: 🧪 Perform Tests
 #run-name: ${{ github.actor }} is performing ${{ github.event_name }} 🚀
 on:
   pull_request:
@@ -20,6 +20,7 @@ jobs:
   # to playwright
   e2e-tests:
     runs-on: ubuntu-latest
+    environment: staging
     needs: [build-and-upload]
     steps:
       - uses: actions/checkout@v4
