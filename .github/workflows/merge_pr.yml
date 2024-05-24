@@ -36,4 +36,4 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: |
           deploymentUrl="$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
-          vercel alias --token=${{ secrets.VERCEL_TOKEN }} set "$deploymentUrl" trunkbased-cicd-workflow-staging.vercel.app
+          vercel alias --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} set "$deploymentUrl" trunkbased-cicd-workflow-staging.vercel.app
