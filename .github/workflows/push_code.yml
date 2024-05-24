@@ -26,10 +26,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+
       - name: Install Vercel CLI
         run: npm install --global vercel@33.2.0
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
       - name: Build Project Artifacts
         run: |
           vercel build --token=${{ secrets.VERCEL_TOKEN }}
