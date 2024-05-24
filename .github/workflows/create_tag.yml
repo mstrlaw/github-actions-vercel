@@ -12,7 +12,7 @@ on:
 jobs:
   confirm-branch:
     runs-on: ubuntu-latest
-    environment: production
+    environment: Production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,6 +31,7 @@ jobs:
 
   deploy-to-prod:
     runs-on: ubuntu-latest
+    environment: Production
     needs: [confirm-branch]
     steps:
       - name: Checkout repository

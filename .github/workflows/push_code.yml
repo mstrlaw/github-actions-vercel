@@ -21,7 +21,7 @@ jobs:
       - run: echo "I will lint things"
   deploy-preview:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: Development
     needs: [lint-code]
     steps:
       - name: Checkout repository

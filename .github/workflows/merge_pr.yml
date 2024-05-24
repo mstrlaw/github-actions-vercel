@@ -18,7 +18,7 @@ jobs:
         run: echo Just checking PR is merged and not closed
   deploy-to-staging:
     runs-on: ubuntu-latest
-    environment: staging
+    environment: Staging
     needs: [confirm-merge]
     steps:
       - name: Checkout repository
