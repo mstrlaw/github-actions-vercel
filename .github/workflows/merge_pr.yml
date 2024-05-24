@@ -1,5 +1,8 @@
 # This workflow runs for any PR merged into main
 name: Deploy to Development
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 on:
   pull_request:
     branches:
@@ -39,34 +42,10 @@ jobs:
               # Now you can use the deployment url from stdout for the next step of your workflow
               deploymentUrl=`cat deployment-url.txt`
               # Here we actually do the aliasing to our staging url
-              vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app
+              vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --scope=${{ secrets.VERCEL_ORG_ID }}
           else
               # Handle the error
               errorMessage=`cat error.txt`
               echo "There was an error: $errorMessage"
           fi
-  # build-and-upload:
-  #   runs-on: ubuntu-latest
-  #   needs: [confirm-merge]
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: 'Build & deploy'
-  #       run: |
-  #         echo vercel build
-  #         echo vercel deploy --prebuilt >deployment-url.txt 2>error.txt
-  #         echo alias $deploymentUrl to dev.surfe.com
-        #We need the below code to alias the returned deploymentUrl into our custom dev domain
-        #See: https://vercel.com/docs/cli/deploy#deploying-to-a-custom-domain
-        
-        #vercel deploy >deployment-url.txt 2>error.txt
-        # check the exit code
-        #code=$?
-        #if [ $code -eq 0 ]; then
-            # Now you can use the deployment url from stdout for the next step of your workflow
-            #deploymentUrl=`cat deployment-url.txt`
-            #vercel alias $deploymentUrl my-custom-domain.com
-        #else
-            # Handle the error
-            #errorMessage=`cat error.txt`
-            #echo "There was an error: $errorMessage"
-        #fi
+      
