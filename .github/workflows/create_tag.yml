@@ -1,24 +1,19 @@
 # This workflow runs for new tags created only on the main branch
 name: Deploy to Production
 on:
-  create:
+  push:
+    tags:
+    # Matches semver format
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-  confirm-tag:
+  confirm-branch:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Fetch all history for all branches and tags
-
-      - name: Validate tag format
-        id: validate_tag
-        run: |
-          if [[ ! "${GITHUB_REF#refs/tags/}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-            echo "Tag does not match semver pattern. Exiting."
-            exit 1
-          fi
 
       - name: Validate branch
         id: check_main
@@ -32,7 +27,7 @@ jobs:
 
   build-and-upload:
     runs-on: ubuntu-latest
-    needs: [confirm-tag]
+    needs: [confirm-branch]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
