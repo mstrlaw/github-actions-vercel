@@ -35,17 +35,5 @@ jobs:
           ls .vercel/output -la
       - name: Deploy Project Artifacts to Vercel
         run: |
-          vercel deploy --prebuilt --debug --token=${{ secrets.VERCEL_TOKEN }} >deployment-url.txt 2>error.txt
-          # We need the below code to alias the returned deploymentUrl into our custom dev domain
-          code=$?
-          if [ $code -eq 0 ]; then
-              # Now you can use the deployment url from stdout for the next step of your workflow
-              deploymentUrl=`cat deployment-url.txt`
-              # Here we actually do the aliasing to our staging url
-              vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --scope=${{ secrets.VERCEL_ORG_ID }}
-          else
-              # Handle the error
-              errorMessage=`cat error.txt`
-              echo "There was an error: $errorMessage"
-          fi
-      
+          deploymentUrl="$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})"
+          vercel alias --token=${{ secrets.VERCEL_TOKEN }} set "$deploymentUrl" trunkbased-cicd-workflow-staging.vercel.app
