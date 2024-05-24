@@ -1,6 +1,5 @@
 # This workflow runs anytime code is pushed to any branch, except for main
-
-name: Deploy to Preview
+name: 🟡 Deploy to Preview
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -22,6 +21,7 @@ jobs:
       - run: echo "I will lint things"
   deploy-preview:
     runs-on: ubuntu-latest
+    environment: Development
     needs: [lint-code]
     steps:
       - name: Checkout repository
