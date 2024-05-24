@@ -42,7 +42,7 @@ jobs:
               # Now you can use the deployment url from stdout for the next step of your workflow
               deploymentUrl=`cat deployment-url.txt`
               # Here we actually do the aliasing to our staging url
-              vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --scope=${{ secrets.VERCEL_ORG_ID }}
+              vercel alias $deploymentUrl trunkbased-cicd-workflow-staging.vercel.app --token=${{ secrets.VERCEL_TOKEN }}
           else
               # Handle the error
               errorMessage=`cat error.txt`
