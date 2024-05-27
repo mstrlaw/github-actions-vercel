@@ -74,3 +74,17 @@ sequenceDiagram
         Note over V: trunkbased-cicd-workflow.vercel.app
     end
 ```
+
+### PoC Under the Hood
+
+- Project is a simple static site with 2 pages
+- Server is ran using [PM2](https://www.npmjs.com/package/pm2), which allows to run it in the background without blocking execution of job steps
+- Interfacing with Vercel is done using their [CLI](https://vercel.com/docs/cli)
+- Vercel project and org keys must be setup for using the CLI (see below)
+
+### Setting up Secrets
+
+In this case, secrets were setup at the level of Actions (but can be set at the repo level and/or per environment):
+
+![Trunk based workflow](static/secrets.png)
+
