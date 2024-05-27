@@ -1,11 +1,18 @@
 # github-actions-vercel
 > A simple PoC demonstrating Trunk Based CI/CD workflow, using GitHub actions and Vercel.
 
-### Workflows
+## Status
 
 [![🧪 Tests](https://github.com/surfe/github-actions-vercel/actions/workflows/open_pr.yml/badge.svg)](https://github.com/surfe/github-actions-vercel/actions/workflows/open_pr.yml)
 [![🔵 Deploy to Staging](https://github.com/surfe/github-actions-vercel/actions/workflows/merge_pr.yml/badge.svg)](https://github.com/surfe/github-actions-vercel/actions/workflows/merge_pr.yml)
 [![🏄 Production](https://github.com/surfe/github-actions-vercel/actions/workflows/create_tag.yml/badge.svg?branch=main)](https://github.com/surfe/github-actions-vercel/actions/workflows/create_tag.yml)
+
+## Environments
+
+[![Production - trunkbased-cicd-workflow.vercel.app](https://img.shields.io/badge/Production-trunkbased--cicd--workflow.vercel.app-2ea44f)](https://trunkbased-cicd-workflow.vercel.app/)
+
+[![Staging - trunkbased-cicd-workflow-staging.vercel.app](https://img.shields.io/static/v1?label=Staging&message=trunkbased-cicd-workflow-staging.vercel.app&color=orange)](https://trunkbased-cicd-workflow-staging.vercel.app/)
+
 
 ## Workflow
 ```mermaid
